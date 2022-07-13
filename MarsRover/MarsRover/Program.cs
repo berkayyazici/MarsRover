@@ -32,7 +32,7 @@ namespace MarsRover
                     {
                         case 'f':
                             movingForward.MovingF(Rover.direction);
-                            collusionController.CollusionControl();
+                            collusionController.ForwardCollusionControl();
                             break;
                         case 'l':
                             directions.Direction(Rover.direction, chars[i].ToString());
@@ -44,7 +44,7 @@ namespace MarsRover
 
                         case 'b':
                             movingBackward.MovingB(Rover.direction);
-                            collusionController.CollusionControl();
+                            collusionController.BackwardCollusionControl();
                             break;
 
                         default:
