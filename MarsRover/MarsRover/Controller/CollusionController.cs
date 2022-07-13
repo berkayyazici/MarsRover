@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +12,57 @@ namespace MarsRover.Controller
     {
         Obstacles obstacles = new Obstacles();
 
-        public void CollusionControl()
+        public void ForwardCollusionControl()
         {
             int z = 0; // rows
             int y = 1; // columns
 
             for (int i = 0; i < obstacles.obstacle.GetLength(0); i++)
             {
-                if (Rover.x_coordinate == obstacles.obstacle[i, z])
+                if (Rover.x_coordinate == obstacles.obstacle[i, z] && Rover.y_coordinate == obstacles.obstacle[i, y])
                 {
-                    if (Rover.y_coordinate == obstacles.obstacle[i, y])
+                    if (Rover.direction == "NORTH" || Rover.direction == "SOUTH")
                     {
                         Rover.y_coordinate -= 1;
+                        Console.WriteLine("Rover's X Coordinate : {0}, Y Coordinate : {1}, Direction : {2}, STOPPED !",
+                        Rover.x_coordinate, Rover.y_coordinate, Rover.direction);
+                        break;
+                    }
+
+                    else if (Rover.direction == "EAST" || Rover.direction == "WEST")
+                    {
+                        Rover.x_coordinate -= 1;
+                        Console.WriteLine("Rover's X Coordinate : {0}, Y Coordinate : {1}, Direction : {2}, STOPPED !",
+                        Rover.x_coordinate, Rover.y_coordinate, Rover.direction);
+                        break;
+                    }
+
+                }
+
+            }
+
+        }
+
+        public void BackwardCollusionControl()
+        {
+            int z = 0; // rows
+            int y = 1; // columns
+
+            for (int i = 0; i < obstacles.obstacle.GetLength(0); i++)
+            {
+                if (Rover.x_coordinate == obstacles.obstacle[i, z] && Rover.y_coordinate == obstacles.obstacle[i, y])
+                {
+                    if (Rover.direction == "NORTH" || Rover.direction == "SOUTH")
+                    {
+                        Rover.y_coordinate += 1;
+                        Console.WriteLine("Rover's X Coordinate : {0}, Y Coordinate : {1}, Direction : {2}, STOPPED !",
+                        Rover.x_coordinate, Rover.y_coordinate, Rover.direction);
+                        break;
+                    }
+
+                    else if (Rover.direction == "EAST" || Rover.direction == "WEST")
+                    {
+                        Rover.x_coordinate += 1;
                         Console.WriteLine("Rover's X Coordinate : {0}, Y Coordinate : {1}, Direction : {2}, STOPPED !",
                         Rover.x_coordinate, Rover.y_coordinate, Rover.direction);
                         break;
