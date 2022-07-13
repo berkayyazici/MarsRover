@@ -1,6 +1,6 @@
 # MarsRover
 
-A rover that explores Mars by sending remotely controlled vehicles to the surface of the planet. I developed a program that translates the commands sent from 
+A rover that explores Mars by sending remotely controlled vehicles to the surface of the planet. I developed a console app that translates the commands sent from 
 earth to instructions that are understood by the rover.
 
 The rover is given a command string which contains multiple commands. This string must then be broken into each individual command and that command then executed. 
