@@ -23,6 +23,19 @@ namespace MarsRoverTest
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
+    public class ForwardVerticalTestData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[] { "NORTH", 0, 1 };
+            yield return new object[] { "NORTH", 4, 5 };
+            yield return new object[] { "SOUTH", 1, 0 };
+            yield return new object[] { "SOUTH", 2, 1 };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
     public class MarsRoverTestt
     {
         [Theory]
@@ -49,10 +62,7 @@ namespace MarsRoverTest
         };
 
         [Theory]
-        [InlineData("NORTH", 0, 1)]
-        [InlineData("NORTH", 4, 5)]
-        [InlineData("SOUTH", 1, 0)]
-        [InlineData("SOUTH", 2, 1)]
+        [ClassData(typeof(ForwardVerticalTestData))]
         public void Is_Rover_MovingForward_on_Vertical_Test(string direction, int coordinate, int expected)
         {
             Rover.y_coordinate = coordinate;
