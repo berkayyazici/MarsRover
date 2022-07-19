@@ -1,4 +1,4 @@
-# MarsRover
+# Mars Rover
 
 A rover that explores Mars by sending remotely controlled vehicles to the surface of the planet. I developed a console app that translates the commands sent from 
 earth to instructions that are understood by the rover.
